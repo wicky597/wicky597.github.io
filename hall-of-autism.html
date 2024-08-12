@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall of Autism</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff; /* White text */
+            overflow: hidden; /* Prevent scrollbars from appearing */
+            animation: rainbow-background 10s infinite linear;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+            color: #fff; /* White text */
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #333; /* Optional: subtle separation line */
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff; /* White text */
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 20px;
+            text-align: center;
+            position: relative; /* Ensure absolute positioning works for plus signs */
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Light shadow for contrast */
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .plus-sign {
+            position: absolute;
+            font-size: 16px; /* Slightly larger plus signs */
+            color: transparent; /* Transparent text to use background gradient */
+            pointer-events: none;
+            z-index: 1000;
+            animation: fall 1s linear forwards, rainbow-colors 1s linear infinite; /* Fall animation */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translate(-50%, -50%) translateY(0) scale(1); /* Start at original position */
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) translateY(100px) scale(1.5); /* Move down and grow */
+                opacity: 0;
+            }
+        }
+
+        @keyframes rainbow-colors {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+
+        @keyframes rainbow-background {
+            0% { background-color: red; }
+            14% { background-color: orange; }
+            28% { background-color: yellow; }
+            42% { background-color: green; }
+            57% { background-color: blue; }
+            71% { background-color: indigo; }
+            85% { background-color: violet; }
+            100% { background-color: red; }
+        }
+
+        .rainbow-text {
+            background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+            color: #fff; /* White text */
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            border-top: 1px solid #333; /* Optional: subtle separation line */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hall of Autism</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="the-bin.html">the bin</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="hall-content">
+        <h2>Welcome to the Hall of Autism</h2>
+        <p>Click anywhere on the screen to play music.</p>
+        <p>song made by Top Services.</p>
+
+        <!-- Hidden audio element -->
+        <audio id="audio-player" preload="auto" autoplay>
+            <source src="audiosong.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- Gallery Section -->
+        <div class="gallery">
+            <img src="image1.jpg" alt="Description of Image 1">
+            <img src="image2.jpg" alt="Description of Image 2">
+            <img src="image3.jpg" alt="Description of Image 3">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Hall of Autism made by wicky and cilo.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audioPlayer = document.getElementById('audio-player');
+
+            // Set volume to maximum
+            audioPlayer.volume = 1.0;
+
+            // Function to start audio playback
+            const startAudio = () => {
+                audioPlayer.play().catch(error => {
+                    console.error('Autoplay failed:', error);
+                });
+            };
+
+            // Add click event listener to the whole document
+            document.body.addEventListener('click', () => {
+                startAudio();
+                document.body.removeEventListener('click', startAudio);
+            });
+
+            startAudio();
+
+            // Function to create and animate falling plus signs at the mouse position
+            const createPlusSign = (x, y) => {
+                const plusSign = document.createElement('div');
+                plusSign.classList.add('plus-sign');
+                plusSign.innerText = '+';
+                plusSign.style.left = `${x}px`;
+                plusSign.style.top = `${y}px`;
+                plusSign.style.transform = 'translate(-50%, -50%)'; // Center the plus sign
+                document.body.appendChild(plusSign);
+
+                // Remove the plus sign after the animation
+                setTimeout(() => {
+                    plusSign.remove();
+                }, 1000); // Remove after 1 second
+            };
+
+            // Listen to mouse movement to create plus signs
+            document.addEventListener('mousemove', (event) => {
+                createPlusSign(event.clientX, event.clientY);
+            });
+        });
+    </script>
+</body>
+</html>

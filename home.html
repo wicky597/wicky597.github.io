@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Redirect to login if not logged in
+        window.onload = function() {
+            if (localStorage.getItem('loggedIn') !== 'true') {
+                window.location.href = 'login.html';
+            }
+        };
+    </script>
+    <style>
+        /* Info Button Styles */
+        .info-button {
+            position: fixed;
+            bottom: 25px; /* Distance from bottom */
+            right: 10px; /* Distance from right */
+            padding: 25px 25px; /* Smaller padding */
+            background-color: #007bff; /* Blue background */
+            color: white;
+            text-decoration: none;
+            border-radius: 4px; /* Slightly smaller border radius */
+            font-size: 16px; /* Smaller font size */
+            box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1); /* Slightly smaller shadow */
+        }
+
+        .info-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        /* Report Button Styles */
+        .report-button {
+            position: fixed;
+            bottom: 20px; /* Adjust to avoid overlap with info button */
+            right: 1000px; /* Same right alignment */
+            padding: 10px 20px;
+            background-color: #dc3545; /* Red background */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-button:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Click Bin</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="hall-of-autism.html">Hall of Autism</a></li>
+                <li><a href="the-bin.html">the bin</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="welcome">
+        <h2>Welcome to Click Bin</h2>
+        <p>This is the home page where you can find general information about our site.</p>
+        <ul>
+            <li>Welcome to Click Bin!
+
+                Our mission at Click Bin is to expose individuals who engage in harmful or illegal activities, such as swatting or making false reports. We aim to protect the community by highlighting those who pose a threat, helping you stay informed and safe.
+                
+                How It Works:
+                
+                Submit Information: If you have credible evidence that someone is involved in dangerous activities, you can submit their details to us. We’ll review the information thoroughly.
+                
+                Review & Verify: Our team verifies all submissions to ensure the accuracy of the claims before listing anyone on our site.
+                
+                Expose Threats: Verified individuals are added to our database to alert others and help prevent potential harm.
+                
+                Important Note: We prioritize privacy and accuracy. If you have concerns about misuse of information or need assistance, please contact us directly.
+                
+                Get Started:
+                
+                Submit a Report: Provide details about individuals who may be a threat.
+                Browse Reports: Check our database to see if theres information about potential dangers.
+                Contact Support: For questions or support, reach out to us at Discord DM us on Discord.
+                Stay safe and informed. Together, we can work to prevent harmful actions.
+                
+                [Submit Report] [Browse Database] [Contact Support]
+                
+                .</li>
+        </ul>
+
+        <p>Whether you're looking to make new connections, verify details, or simply gather more information, Click Bin is here to assist you every step of the way. Dive in and explore the possibilities!</p>
+
+        <p>We want to ensure your experience here is both safe and secure. Please rest assured that we take your privacy very seriously.</p>
+
+        <ul>
+            <li>No Personal Data Access: Our system does not allow us to search or access any personal information about individuals without proper authentication. We require a login or username to perform any actions related to user data.</li>
+            <li>Privacy First: We do not store or misuse your information. All interactions are protected and handled in accordance with our strict privacy policy.</li>
+        </ul>
+
+        <p>If you have any questions or concerns, feel free to ask. Your security is our top priority!</p>
+    </section>
+    
+    <footer>
+        <p>&copy; Click Bin made by Wicky and Cilo</p>
+    </footer>
+
+    <!-- Report Someone Button -->
+    <a href="https://discord.gg/hgDeyJTpdW" class="report-button" target="_blank" rel="noopener noreferrer">Report Someone to us and they will be on the bin</a>
+    
+    <!-- Info on Owners Button -->
+    <a href="WICK.html" class="info-button">Info on Owners</a>
+    
+    <script src="scripts.js"></script>
+</body>
+</html>

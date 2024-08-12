@@ -1,0 +1,217 @@
+ /* General body styling */
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white; /* White text */
+    background-color: black; /* Black background */
+}
+
+/* Header styling */
+header {
+    background-color: black; /* Black background for header */
+    color: white; /* White text in header */
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Navigation styling */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white; /* White text for links */
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Section styling */
+section {
+    padding: 20px;
+    color: white; /* White text in section */
+    background-color: black; /* Black background for content area */
+}
+
+/* Paste list styling */
+#paste-list {
+    margin-top: 20px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: black;
+}
+
+.side-name {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    margin-right: 20px;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+#welcome {
+    padding: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    margin-top: auto;
+}
+
+/* Paste item styling */
+.paste-item {
+    border: 1px solid #e91717; /* Darker border */
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #222; /* Dark background for paste items */
+    color: white; /* White text in paste items */
+}
+
+/* Form styling */
+form label {
+    display: block;
+    margin-top: 10px;
+    color: white; /* White text for form labels */
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #d81111; /* Dark border for form elements */
+    background-color: #333; /* Dark background for form elements */
+    color: white; /* White text inside form elements */
+}
+
+form button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #444; /* Dark background for button */
+    color: white; /* White text on button */
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e41414; /* Slightly lighter on hover */
+}
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+header .container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.paste-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+
+
+
+
+
+
+.report-button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.report-button:hover {
+    background-color: #d32f2f;
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WICK</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Base styles for WICK.html */
+        #wick-page {
+            font-family: Arial, sans-serif;
+            background-color: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #wick-page .container {
+            text-align: center;
+            background-color: rgba(163, 108, 326, 0);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgb(10, 10, 10);
+            width: 300px;
+        }
+
+        #wick-page h1 {
+            color: #86b30c;
+        }
+
+        #wick-page .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        #wick-page .profile h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        #wick-page .profile p {
+            font-size: 14px;
+            color: rgb(250, 5, 209);
+        }
+
+        #wick-page .links a, #wick-page .home-button {
+            display: block;
+            text-decoration: none;
+            color: rgb(12, 8, 240);
+            background-color: hsla(307, 88%, 47%, 0);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        #wick-page .links a:hover, #wick-page .home-button:hover {
+            background-color: #000000;
+        }
+
+        /* Snow Effect and Video Background */
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: none;
+        }
+
+        #snow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .snowball {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        #audioPlayer {
+            display: none;
+        }
+
+        #backgroundVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body id="wick-page">
+    <div class="container">
+        <div class="profile">
+            <img src="WICKY.gif" alt="Profile Picture">
+            <h1>WICKY/owner of 597</h1>
+            <p>DM ME TO TRY OUT FOR 597 where one of the biggest groups of hackers and coders + more</p>
+        </div>
+        <div class="links">
+            <a href="https://discord.gg/xEycGe5Wu6" target="_blank">Join Discord Server</a>
+            <a class="home-button" href="home.html">Home</a> <!-- Home Button Added Here -->
+        </div>
+    </div>
+    <canvas id="snow-canvas"></canvas>
+    
+    <!-- Background video element -->
+    <video id="backgroundVideo" autoplay muted>
+        <source src="mp4-1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- MP3 Player -->
+    <audio id="audioPlayer" controls>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Array of video URLs
+        const videoUrls = [
+            'mp4-1.mp4',
+            'mp4-2.mp4'
+        ];
+
+        let currentVideoIndex = 0;
+        const videoElement = document.getElementById('backgroundVideo');
+
+        function playNextVideo() {
+            videoElement.src = videoUrls[currentVideoIndex];
+            videoElement.play();
+            currentVideoIndex = (currentVideoIndex + 1) % videoUrls.length;
+        }
+
+        // Event listener for video end
+        videoElement.addEventListener('ended', playNextVideo);
+
+        // Change the background video when the page loads
+        window.onload = function() {
+            autoPlayAudio();
+            playNextVideo(); // Start with the first video
+        };
+
+        // Get the canvas element
+        const canvas = document.getElementById('snow-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set the canvas dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Define the snowball class
+        class Snowball {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = 5;
+                this.speed = 2;
+                this.angle = Math.random() * Math.PI * 2;
+                this.color = getRandomColor();
+            }
+
+            update() {
+                this.y += this.speed;
+                this.x += Math.sin(this.angle) * this.speed;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.moveTo(this.x - this.size / 2, this.y);
+                ctx.lineTo(this.x + this.size / 2, this.y);
+                ctx.moveTo(this.x, this.y - this.size / 2);
+                ctx.lineTo(this.x, this.y + this.size / 2);
+                ctx.strokeStyle = this.color;
+                ctx.stroke();
+            }
+        }
+
+        // Function to get a random color
+        function getRandomColor() {
+            const colors = ['#FF69B4', '#33CC33', '#6666CC', '#CC3333', '#CCCC33', '#33CCCC'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Create an array to hold the snowballs
+        const snowballs = [];
+
+        // Function to create a new snowball
+        function createSnowball(x, y) {
+            snowballs.push(new Snowball(x, y));
+        }
+
+        // Function to update and draw the snowballs
+        function updateSnowballs() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = snowballs.length - 1; i >= 0; i--) {
+                const snowball = snowballs[i];
+                snowball.update();
+                snowball.draw();
+                if (snowball.y > canvas.height) {
+                    snowballs.splice(i, 1);
+                }
+            }
+        }
+
+        // Function to handle mouse movement
+        function handleMouseMove(event) {
+            const x = event.clientX;
+            const y = event.clientY;
+            createSnowball(x, y);
+        }
+
+        // Add event listeners
+        document.addEventListener('mousemove', handleMouseMove);
+
+        // Main loop
+        function loop() {
+            updateSnowballs();
+            requestAnimationFrame(loop);
+        }
+
+        loop();
+
+        // Function to auto-play the audio
+        function autoPlayAudio() {
+            var audio = document.getElementById('audioPlayer');
+            
+            setTimeout(function() {
+                audio.play();
+            }, 2000);
+
+            audio.addEventListener('ended', function() {
+                audio.currentTime = 0;
+                audio.play();
+            });
+        }
+    </script>
+</body>
+</html>

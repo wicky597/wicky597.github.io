@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen</title>
+    <style>
+        body, html {
+            margin: 0;
+            height: 100%;
+            background: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .loading-screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #111;
+            text-align: center;
+        }
+        .logo {
+            font-family: monospace;
+            white-space: pre;
+            margin-bottom: 20px;
+        }
+        .timer {
+            font-size: 48px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <pre class="logo">
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⠤⣄⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⠀⠀⠀⠀⣀⠴⠚⠉⠀⠀⠀⠀⠀⠈⠉⠳⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⠀⠀⣠⠚⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⣆⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⢀⡞⡥⠀⠀⠀⠀⣠⠴⢀⣠⠤⢦⡀⠀⠀⠀⠀⠀⠈⣆⠀⠀⠀⠀⠀  
+⠀⠀⢠⡞⢸⠁⠀⠀⣠⢚⡥⠚⠉⠀⠀⠘⣗⡄⠀⠀⢰⠀⠀⢸⠀⠀⠀⠀⠀  
+⠀⠀⢾⠇⡎⠀⠀⣰⡳⠋⠀⠀⣠⣤⠶⠢⡿⣸⣆⠀⠈⣧⣄⢸⠁⠀⠀⠀⠀  
+⠀⠀⢸⡄⢳⣠⣾⡟⠓⠆⠀⠘⠙⢀⣤⣶⢿⣤⣹⡅⠀⣿⠈⣿⡇⠀⠀⠀⠀  
+⠀⠀⠀⡇⠸⡇⣾⡛⣶⡦⠀⠀⠀⠛⢱⢼⣷⠸⠋⢣⠀⡇⣹⠛⡇⠀⠀⠀⠀  
+⠀⠀⠀⢱⠀⠹⣏⠉⢟⣻⣀⠀⠀⠀⠐⠛⠛⠐⠀⠘⣴⡽⣇⠀⢸⡀⠀⠀⠀  
+⠀⠀⠀⠈⢇⠀⠘⡄⠀⠀⢸⡁⠀⠀⠀⠀⠀⠀⠀⠀⣿⢀⢹⡀⠈⣧⠀⠀⠀  
+⠀⠀⠀⠀⠈⢦⠀⢻⢦⡀⠈⠰⠶⠒⠂⠀⠀⢀⡤⠀⡇⢘⡆⢇⠀⠸⣷⠀⠀  
+⠀⠀⠀⠀⠀⠀⠳⡼⡀⣟⡶⢄⡀⠀⢀⡠⠖⠁⠀⢀⡇⢸⢻⠸⡀⠀⣿⢇⠀  
+⠀⠀⠀⠀⠀⠀⢠⠏⢳⠟⢀⠷⠈⣹⡇⠀⠀⠀⠀⣼⢣⡞⢸⠀⡇⢰⣼⢸⠀  
+⠀⠀⠀⠀⠀⢀⠎⣠⠋⢀⡼⠟⠊⠟⠀⠀⠀⠀⠀⣿⠀⠑⢯⣀⣇⣎⢏⡞⠀  
+⠀⠀⠀⢀⡠⠾⠔⠓⢞⣁⣀⣀⠀⠀⠀⠀⠀⠀⠀⢻⣀⣀⣀⡈⠛⠿⠯⣀⠀  
+⠀⠀⢠⠋⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠐⠉⠉⠉⠉⠉⣧⡀⠀⠀⠀⠀⠀⠀⠑⡄  
+⠀⠀⢻⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠧⠀⠀⠀⠀⠀⠀⠀ ⢹⡆  
+⠀⠀⢸⠀⠀⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⠀⠀⠀⠀⠀⠀ ⡼⠃  
+⠀⠀⠘⡤⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⡀⠀⠀⠀ ⠀⢠⠇⠀  
+⠀⣠⠎⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀ ⠀⡎⠀⠀  
+⢠⠇⣠⡂⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠘⡄⠀ ⠀⡸⠀⠀⠀  
+⢸⡀⠛⠄⢀⠀⠀⠀⠀⠀⠀⠀⣸⠀⠀⠀⠀⠀⠀⠀⢀⠵⠀⠀⡇⠀⢀⠇⠀⠀⠀  
+⠀⢷⡀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠸⡀⠀⠀⠀⠀⠀⠂⠀⠀⠀⣰⠁⠀ ⣾⠀⠀⠀⠀  
+⠀⠀⠑⢤⣀⠀⠀⢀⣠⠴⠋⠀⠀⠙⢦⡀⠀⠀⠀⠀⠀⣀⡴⠁ ⢠⠃⠀⠀⠀⠀  
+⠀⠀⠀⠀⢠⢻⠉⠁⠀⠀⠀⠀⠀⠀⠀⠈⠉⠒⠒⠒⠉⡽⠀⠀⠀⡼⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣿⡄⠀⠀ ⢠⡀⠀⠀⠀⠀⠙⣄⠀⠀⠀⢨⠁⠀⠀⣼⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⠀⠀⢿⣇⠀⠀ ⢸⠀⠀⠀⠀⠀⠀⠈⠁⠀⢀⡜⠀⠀⠀⡗⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⠀⠀⢸⢸⠀⠀ ⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⢠⡇⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⠀⠀⠸⣿⡆⠀ ⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠐⡇⠀⠀⢰⠃⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⠀⠀⠀⣻⠁⠀ ⠸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⡞⠀⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⠀⠀⢠⠃⠀⠀⠸⢳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠳⡼⠁⠀⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⠀⢠⠏⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⡀⠀⠀⠀⠀⠀⠀  
+⠀⠀⠀⢀⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢦⡀⠀⠀⠀⠀  
+ </pre>
+ <div class="timer" id="timer">9</div>
+    </div>
+    <script>
+        let countdown = 9;
+        const timerElement = document.getElementById('timer');
+        
+        const interval = setInterval(() => {
+            countdown--;
+            timerElement.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(interval);
+                window.location.href = 'home.html'; // Change to your actual home page path
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
